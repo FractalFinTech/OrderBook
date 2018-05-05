@@ -12,8 +12,9 @@ import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
-public class Market
+public class MarketItem
 {
+    private String itemName;
     // Maps use List as value to hold multiple values with same hash
     private Map<Double, List<Order>> bidMap = null;
     private Map<Double, List<Order>> offerMap = null;
@@ -22,13 +23,20 @@ public class Market
     private Queue<Double> offerMinPriceList = null;
 
     // Initializes marketplace
-    public Market()
+    public MarketItem(String name)
     {
         bidMap = new HashMap<Double, List<Order>>();
         offerMap = new HashMap<Double, List<Order>>();
 
         bidMaxPriceList = new PriorityQueue<Double>(30, Collections.reverseOrder()); // top is maximum bid price
         offerMinPriceList = new PriorityQueue<Double>();  // top is minimum offer price
+
+        this.itemName = name;
+    }
+
+    public void setName(String name)
+    {
+      this.itemName = name;
     }
 
     /*  Adds bid to map by hashing the price, then

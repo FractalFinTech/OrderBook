@@ -8,17 +8,17 @@ import java.lang.Exception;
 import java.util.List;
 import java.util.LinkedList;
 
-import fractalfintech.orderbook.Market;
+import fractalfintech.orderbook.MarketItem;
 import fractalfintech.orderbook.Order;
 
 public class TestMarket
 {
-    private Market market;
+    private MarketItem market;
 
     @Before
     public void initMarket()
     {
-        market = new Market();
+        market = new MarketItem("Test");
     }
 
     /*******************************************
