@@ -3,9 +3,15 @@ package fractalfintech.orderbook;
 import fractalfintech.orderbook.MarketItem;
 import fractalfintech.orderbook.MarketList;
 import fractalfintech.orderbook.Order;
+import fractalfintech.orderbook.MarketItemDao;
+
 
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+
 
 import java.lang.Double;
 
@@ -16,6 +22,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Queue;
+
 
 @RestController
 public class MarketController
@@ -29,6 +36,22 @@ public class MarketController
         marketList.Add("Test");
     }
 
+
+    @RequestMapping("/market/add/item/{name}")
+  	public String AddMarketItem(@PathVariable(value="name") String name) {
+        marketList.Add(name);
+  			return "success";
+  	}
+
+    @PostMapping("/market/bid/add")
+  	public String AddMarketBid(@ModelAttribute MarketItemDao item) {
+  			return "success";
+  	}
+
+    @PostMapping("/market/offer/add")
+  	public String AddMarketOffer(@ModelAttribute MarketItemDao item) {
+  			return "success";
+  	}
 
     @RequestMapping("/")
   	public String index() {
