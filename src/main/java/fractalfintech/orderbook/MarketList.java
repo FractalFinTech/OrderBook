@@ -1,7 +1,6 @@
 package fractalfintech.orderbook;
 
 import fractalfintech.orderbook.MarketItem;
-import fractalfintech.orderbook.MarketList;
 import fractalfintech.orderbook.Order;
 
 import org.springframework.web.bind.annotation.RestController;
@@ -17,22 +16,23 @@ import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
-@RestController
-public class MarketController
-{
-    private MarketList marketList;
 
-    // Initializes marketplace
-    public MarketController()
+public class MarketList
+{
+    private MarketItem market;
+    private Map<String, MarketItem> itemList = null;
+
+    public MarketList()
     {
-        marketList = new MarketList();
-        marketList.Add("Test");
+        itemList = new HashMap<String, MarketItem>();
+        market = new MarketItem("Test");
+        itemList.put("Test", market);
     }
 
-
-    @RequestMapping("/")
-  	public String index() {
-  			return "Greetings from Spring Boot!";
-  	}
+    public void Add(String name)
+    {
+      market = new MarketItem(name);
+      itemList.put(name, market);
+    }
 
   }
