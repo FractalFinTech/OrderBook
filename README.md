@@ -40,12 +40,12 @@ curl http://localhost:8080/market/list/get
 
 Bid transaction
 ```
-curl -H "Content-Type: application/json" -d '{"name":"diner", "price":"100", "qty":"20"}' -X POST http://localhost:8080/market/bid/add
+curl -H "Content-Type: application/json" -d '{"name":"diner0", "price":"100", "qty":"20"}' -X POST http://localhost:8080/market/bid/add
 ```
 
 Offer transaction
 ```
-curl -H "Content-Type: application/json" -d '{"name":"diner", "price":"100", "qty":"10"}' -X POST http://localhost:8080/market/offer/add
+curl -H "Content-Type: application/json" -d '{"name":"diner0", "price":"100", "qty":"10"}' -X POST http://localhost:8080/market/offer/add
 ```
 
 
