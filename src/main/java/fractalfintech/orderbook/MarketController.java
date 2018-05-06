@@ -3,16 +3,21 @@ package fractalfintech.orderbook;
 import fractalfintech.orderbook.OrderBook;
 import fractalfintech.orderbook.MarketList;
 import fractalfintech.orderbook.Order;
-//import fractalfintech.orderbook.OrderItemDao;
+import fractalfintech.orderbook.OrderItemDao;
 
 
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.lang.Double;
 
@@ -28,6 +33,7 @@ import java.util.Queue;
 @RestController
 public class MarketController
 {
+	private final Logger logger = LoggerFactory.getLogger(MarketController.class);
     private MarketList marketList;
 
     // Initializes marketplace
@@ -51,10 +57,13 @@ public class MarketController
         return list;
   	}
 
-    @PostMapping("/market/bid/add")
-  	public String AddMarketBid(@ModelAttribute OrderItemDao bid) {
+    @RequestMapping(value = "/market/bid/add", method = RequestMethod.POST,consumes="application/json")
+  	public ResponseEntity<String> AddMarketBid(@RequestBody OrderItemDao bid) {
+    	logger.info("MarketController bid name : {}", bid.getName());
+    	logger.info("MarketController bid price : {}", bid.getPrice());
+    	logger.info("MarketController bid qty : {}", bid.getQty());
     	marketList.AddBid(bid);
-  		return "success";
+  		return new ResponseEntity<String>("success: bid added.", HttpStatus.OK);
   	}
 
     @PostMapping("/market/bid/get")
@@ -65,10 +74,13 @@ public class MarketController
   	}
 
 
-    @PostMapping("/market/offer/add")
-  	public String AddMarketOffer(@ModelAttribute OrderItemDao offer) {
+    @RequestMapping(value = "/market/offer/add", method = RequestMethod.POST,consumes="application/json")
+  	public ResponseEntity<String> AddMarketOffer(@RequestBody OrderItemDao offer) {
+    	logger.info("MarketController offer name : {}", offer.getName());
+    	logger.info("MarketController offer price : {}", offer.getPrice());
+    	logger.info("MarketController offer qty : {}", offer.getQty());
     	marketList.AddOffer(offer);
- 		return "success";
+  		return new ResponseEntity<String>("success: offer added.", HttpStatus.OK);
   	}
 
     @PostMapping("/market/offer/get")

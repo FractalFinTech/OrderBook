@@ -38,15 +38,25 @@ Get list
 curl http://localhost:8080/market/list/get
 ```
 
+Bid transaction
+```
+curl -H "Content-Type: application/json" -d '{"name":"diner", "price":"100", "qty":"20"}' -X POST http://localhost:8080/market/bid/add
+```
 
-Get market offer list
+Offer transaction
 ```
-curl -d "name=diner0" -X POST http://localhost:8080/market/offer/get
+curl -H "Content-Type: application/json" -d '{"name":"diner", "price":"100", "qty":"10"}' -X POST http://localhost:8080/market/offer/add
 ```
+
 
 Get market bid list
 ```
 curl -d "name=diner0" -X POST http://localhost:8080/market/bid/get
+```
+
+Get market offer list
+```
+curl -d "name=diner0" -X POST http://localhost:8080/market/offer/get
 ```
 
 ## Dev Environment Requirements

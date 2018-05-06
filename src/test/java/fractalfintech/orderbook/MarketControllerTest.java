@@ -63,7 +63,7 @@ public class MarketControllerTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(content().string(equalTo("success")));
+                .andExpect(content().string(equalTo("success: bid added.")));
     }
 
     @Test
@@ -79,6 +79,6 @@ public class MarketControllerTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(content().string(equalTo("success")));
+                .andExpect(content().string(equalTo("success: offer added.")));
     }
 }

@@ -6,6 +6,8 @@ package fractalfintech.orderbook;
 
 
 import org.springframework.web.bind.annotation.RestController;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.lang.Double;
@@ -18,9 +20,13 @@ import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 public class MarketList
 {
+	private final Logger logger = LoggerFactory.getLogger(MarketList.class);
     private OrderBook market;
     private Map<String, OrderBook> orderBooks = null;
 
@@ -45,6 +51,9 @@ public class MarketList
 
     public void AddBid(OrderItemDao bid)
     {
+    	logger.info("MarketList bid name : {}", bid.getName());
+    	logger.info("MarketList bid price : {}", bid.getPrice());
+    	logger.info("MarketList bid qty : {}", bid.getQty());
     	if (orderBooks.containsKey(bid.getName())) {
     		OrderBook book = orderBooks.get(bid.getName());
     		book.addBid(bid.getPrice(), bid.getQty());
