@@ -1,15 +1,15 @@
 package fractalfintech.orderbook;
 
-import fractalfintech.orderbook.OrderBook;
-import fractalfintech.orderbook.Order;
-import fractalfintech.orderbook.OrderItemDao;
+//import fractalfintech.orderbook.OrderBook;
+//import fractalfintech.orderbook.Order;
+//import fractalfintech.orderbook.OrderItemDao;
 
 
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.lang.Double;
-
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -31,6 +31,12 @@ public class MarketList
         orderBooks.put("Test", market);
     }
 
+    public List<String> GetList()
+    {
+      List<String> list = new ArrayList<String>(orderBooks.keySet());  
+      return list;
+    }
+
     public void Add(String name)
     {
       market = new OrderBook(name);
@@ -44,7 +50,7 @@ public class MarketList
     		book.addBid(bid.getPrice(), bid.getQty());
     	}
     }
-    
+
     public void AddOffer(OrderItemDao offer)
     {
     	if (orderBooks.containsKey(offer.getName())) {
@@ -52,7 +58,7 @@ public class MarketList
     		book.addBid(offer.getPrice(), offer.getQty());
     	}
     }
-    
+
     public Map<Double, List<Order>> GetBidMap(OrderItemDao bid)
     {
     	if (orderBooks.containsKey(bid.getName())) {
@@ -61,7 +67,7 @@ public class MarketList
             return bidMap;
     	}
     	return null;
-    }    
+    }
 
     public Map<Double, List<Order>> GetOfferMap(OrderItemDao offer)
     {
@@ -71,6 +77,6 @@ public class MarketList
             return offerMap;
     	}
     	return null;
-    }    
-    
+    }
+
   }

@@ -44,6 +44,13 @@ public class MarketController
         return "success";
   	}
 
+    @RequestMapping("/market/list/get")
+    @ResponseBody
+  	public List<String>  GetMarketList() {
+    	List<String> list = marketList.GetList();
+        return list;
+  	}
+
     @PostMapping("/market/bid/add")
   	public String AddMarketBid(@ModelAttribute OrderItemDao bid) {
     	marketList.AddBid(bid);
@@ -56,8 +63,8 @@ public class MarketController
     	Map<Double, List<Order>> list = marketList.GetBidMap(bid);
   		return list;
   	}
-    
-    
+
+
     @PostMapping("/market/offer/add")
   	public String AddMarketOffer(@ModelAttribute OrderItemDao offer) {
     	marketList.AddOffer(offer);
@@ -71,7 +78,7 @@ public class MarketController
   		return list;
   	}
 
-    
+
     @RequestMapping("/")
   	public String index() {
   		return "Greetings from Spring Boot!";
