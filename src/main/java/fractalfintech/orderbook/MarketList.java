@@ -2,6 +2,8 @@ package fractalfintech.orderbook;
 
 import fractalfintech.orderbook.OrderBook;
 import fractalfintech.orderbook.Order;
+import fractalfintech.orderbook.OrderItemDao;
+
 
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,4 +37,20 @@ public class MarketList
       orderBooks.put(name, market);
     }
 
+    public void AddBid(OrderItemDao bid)
+    {
+    	if (orderBooks.containsKey(bid.getName())) {
+    		OrderBook book = orderBooks.get(bid.getName());
+    		book.addBid(bid.getPrice(), bid.getQty());
+    	}
+    }
+    
+    public void AddOffer(OrderItemDao offer)
+    {
+    	if (orderBooks.containsKey(offer.getName())) {
+    		OrderBook book = orderBooks.get(offer.getName());
+    		book.addBid(offer.getPrice(), offer.getQty());
+    	}
+    }
+    
   }

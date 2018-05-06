@@ -3,7 +3,7 @@ package fractalfintech.orderbook;
 import fractalfintech.orderbook.OrderBook;
 import fractalfintech.orderbook.MarketList;
 import fractalfintech.orderbook.Order;
-import fractalfintech.orderbook.OrderItemDao;
+//import fractalfintech.orderbook.OrderItemDao;
 
 
 import org.springframework.web.bind.annotation.RestController;
@@ -40,22 +40,24 @@ public class MarketController
     @RequestMapping("/market/add/item/{name}")
   	public String AddMarketItem(@PathVariable(value="name") String name) {
         marketList.Add(name);
-  			return "success";
+        return "success";
   	}
 
     @PostMapping("/market/bid/add")
-  	public String AddMarketBid(@ModelAttribute OrderItemDao item) {
-  			return "success";
+  	public String AddMarketBid(@ModelAttribute OrderItemDao bid) {
+    	marketList.AddBid(bid);
+  		return "success";
   	}
 
     @PostMapping("/market/offer/add")
-  	public String AddMarketOffer(@ModelAttribute OrderItemDao item) {
-  			return "success";
+  	public String AddMarketOffer(@ModelAttribute OrderItemDao offer) {
+    	marketList.AddOffer(offer);
+ 		return "success";
   	}
 
     @RequestMapping("/")
   	public String index() {
-  			return "Greetings from Spring Boot!";
+  		return "Greetings from Spring Boot!";
   	}
 
   }

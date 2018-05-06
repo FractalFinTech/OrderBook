@@ -70,7 +70,7 @@ public class MarketControllerTest {
     public void addOffer() throws Exception {
         OrderItemDao marketItemDao = new OrderItemDao();
         marketItemDao.setName("Apple");
-        marketItemDao.setPrice(148.78);
+        marketItemDao.setPrice(158.78);
         marketItemDao.setQty(20);
         marketItemDao.setType("Market");
         marketItemDao.setTranType("Sell");

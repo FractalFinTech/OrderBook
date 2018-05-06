@@ -19,3 +19,4 @@ java -jar target/orderbook-0.0.1-SNAPSHOT.jar
 
 - https://en.wikipedia.org/wiki/Order_book_(trading)
 - https://www.youtube.com/watch?v=zeg3B7gMCNQ
+- https://www.investopedia.com/terms/o/order-book.asp
