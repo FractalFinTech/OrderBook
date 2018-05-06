@@ -49,7 +49,13 @@ Get market bid list
 curl -d "name=diner0" -X POST http://localhost:8080/market/bid/get
 ```
 
+## Dev Envionment Requirements
 
+- Linux (Ubuntu) OS
+- Java SDK
+- Spring Boot STS (Eclipse)
+- Maven
+- Curl
 
 
 ## Refences
