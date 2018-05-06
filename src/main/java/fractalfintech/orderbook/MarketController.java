@@ -8,6 +8,7 @@ import fractalfintech.orderbook.Order;
 
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -49,12 +50,28 @@ public class MarketController
   		return "success";
   	}
 
+    @PostMapping("/market/bid/get")
+    @ResponseBody
+  	public Map<Double, List<Order>> GetMarketBid(@ModelAttribute OrderItemDao bid) {
+    	Map<Double, List<Order>> list = marketList.GetBidMap(bid);
+  		return list;
+  	}
+    
+    
     @PostMapping("/market/offer/add")
   	public String AddMarketOffer(@ModelAttribute OrderItemDao offer) {
     	marketList.AddOffer(offer);
  		return "success";
   	}
 
+    @PostMapping("/market/offer/get")
+    @ResponseBody
+  	public Map<Double, List<Order>> GetMarketOffer(@ModelAttribute OrderItemDao offer) {
+    	Map<Double, List<Order>> list = marketList.GetOfferMap(offer);
+  		return list;
+  	}
+
+    
     @RequestMapping("/")
   	public String index() {
   		return "Greetings from Spring Boot!";

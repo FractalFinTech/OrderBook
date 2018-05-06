@@ -53,4 +53,24 @@ public class MarketList
     	}
     }
     
+    public Map<Double, List<Order>> GetBidMap(OrderItemDao bid)
+    {
+    	if (orderBooks.containsKey(bid.getName())) {
+    		OrderBook book = orderBooks.get(bid.getName());
+        	Map<Double, List<Order>> bidMap = book.getBidMap();
+            return bidMap;
+    	}
+    	return null;
+    }    
+
+    public Map<Double, List<Order>> GetOfferMap(OrderItemDao offer)
+    {
+    	if (orderBooks.containsKey(offer.getName())) {
+    		OrderBook book = orderBooks.get(offer.getName());
+        	Map<Double, List<Order>> offerMap = book.getOfferMap();
+            return offerMap;
+    	}
+    	return null;
+    }    
+    
   }

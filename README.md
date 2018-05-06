@@ -15,6 +15,26 @@ To run the package:
 java -jar target/orderbook-0.0.1-SNAPSHOT.jar
 ```
 
+## Test Using Curl
+
+Add item to order book list
+```
+curl -d  http://localhost:8080/market/add/item/Apple
+```
+
+Get market offer list
+```
+curl -d "name=Apple" -X POST http://localhost:8080/market/offer/get
+```
+
+Get market bid list
+```
+curl -d "name=Apple" -X POST http://localhost:8080/market/bid/get
+```
+
+
+
+
 ## Refences
 
 - https://en.wikipedia.org/wiki/Order_book_(trading)
