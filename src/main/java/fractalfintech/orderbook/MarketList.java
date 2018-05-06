@@ -1,6 +1,6 @@
 package fractalfintech.orderbook;
 
-import fractalfintech.orderbook.MarketItem;
+import fractalfintech.orderbook.OrderBook;
 import fractalfintech.orderbook.Order;
 
 import org.springframework.web.bind.annotation.RestController;
@@ -19,20 +19,20 @@ import java.util.Queue;
 
 public class MarketList
 {
-    private MarketItem market;
-    private Map<String, MarketItem> itemList = null;
+    private OrderBook market;
+    private Map<String, OrderBook> orderBooks = null;
 
     public MarketList()
     {
-        itemList = new HashMap<String, MarketItem>();
-        market = new MarketItem("Test");
-        itemList.put("Test", market);
+        orderBooks = new HashMap<String, OrderBook>();
+        market = new OrderBook("Test");
+        orderBooks.put("Test", market);
     }
 
     public void Add(String name)
     {
-      market = new MarketItem(name);
-      itemList.put(name, market);
+      market = new OrderBook(name);
+      orderBooks.put(name, market);
     }
 
   }

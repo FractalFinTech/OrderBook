@@ -1,6 +1,6 @@
 package fractalfintech.orderbook;
 
-public class MarketItemDao {
+public class OrderItemDao {
 
     private String name;
     private double price;

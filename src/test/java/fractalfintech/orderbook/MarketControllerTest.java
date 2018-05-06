@@ -52,7 +52,7 @@ public class MarketControllerTest {
 
     @Test
     public void addBid() throws Exception {
-        MarketItemDao marketItemDao = new MarketItemDao();
+        OrderItemDao marketItemDao = new OrderItemDao();
         marketItemDao.setName("Apple");
         marketItemDao.setPrice(148.78);
         marketItemDao.setQty(25);
@@ -68,7 +68,7 @@ public class MarketControllerTest {
 
     @Test
     public void addOffer() throws Exception {
-        MarketItemDao marketItemDao = new MarketItemDao();
+        OrderItemDao marketItemDao = new OrderItemDao();
         marketItemDao.setName("Apple");
         marketItemDao.setPrice(148.78);
         marketItemDao.setQty(20);

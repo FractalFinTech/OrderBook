@@ -7,19 +7,19 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import fractalfintech.orderbook.MarketItem;
+import fractalfintech.orderbook.OrderBook;
 import fractalfintech.orderbook.Order;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class OrderbookApplicationTests {
 
-	private MarketItem market;
+	private OrderBook market;
 
 	@Before
 	public void initMarket()
 	{
-			market = new MarketItem("Test");
+			market = new OrderBook("Test");
 	}
 
 	@Test

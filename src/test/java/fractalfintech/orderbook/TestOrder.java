@@ -1,3 +1,5 @@
+package fractalfintech.orderbook;
+
 import static org.junit.Assert.*;
 
 import org.junit.Before;

@@ -1,9 +1,9 @@
 package fractalfintech.orderbook;
 
-import fractalfintech.orderbook.MarketItem;
+import fractalfintech.orderbook.OrderBook;
 import fractalfintech.orderbook.MarketList;
 import fractalfintech.orderbook.Order;
-import fractalfintech.orderbook.MarketItemDao;
+import fractalfintech.orderbook.OrderItemDao;
 
 
 import org.springframework.web.bind.annotation.RestController;
@@ -44,12 +44,12 @@ public class MarketController
   	}
 
     @PostMapping("/market/bid/add")
-  	public String AddMarketBid(@ModelAttribute MarketItemDao item) {
+  	public String AddMarketBid(@ModelAttribute OrderItemDao item) {
   			return "success";
   	}
 
     @PostMapping("/market/offer/add")
-  	public String AddMarketOffer(@ModelAttribute MarketItemDao item) {
+  	public String AddMarketOffer(@ModelAttribute OrderItemDao item) {
   			return "success";
   	}
 

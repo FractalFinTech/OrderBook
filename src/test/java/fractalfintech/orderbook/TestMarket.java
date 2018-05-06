@@ -1,3 +1,5 @@
+package fractalfintech.orderbook;
+
 import static org.junit.Assert.*;
 
 import org.junit.Before;
@@ -8,17 +10,17 @@ import java.lang.Exception;
 import java.util.List;
 import java.util.LinkedList;
 
-import fractalfintech.orderbook.MarketItem;
+import fractalfintech.orderbook.OrderBook;
 import fractalfintech.orderbook.Order;
 
 public class TestMarket
 {
-    private MarketItem market;
+    private OrderBook market;
 
     @Before
     public void initMarket()
     {
-        market = new MarketItem("Test");
+        market = new OrderBook("Test");
     }
 
     /*******************************************
