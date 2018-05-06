@@ -30,7 +30,7 @@ java -jar target/orderbook-0.0.1-SNAPSHOT.jar
 
 Add item to order book list
 ```
-curl http://localhost:8080/market/add/item/Apple
+curl http://localhost:8080/market/add/item/diner0
 ```
 
 Get list
@@ -41,12 +41,12 @@ curl http://localhost:8080/market/list/get
 
 Get market offer list
 ```
-curl -d "name=Apple" -X POST http://localhost:8080/market/offer/get
+curl -d "name=diner0" -X POST http://localhost:8080/market/offer/get
 ```
 
 Get market bid list
 ```
-curl -d "name=Apple" -X POST http://localhost:8080/market/bid/get
+curl -d "name=diner0" -X POST http://localhost:8080/market/bid/get
 ```
 
 
