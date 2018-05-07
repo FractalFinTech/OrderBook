@@ -49,6 +49,8 @@ public class OrderBook
      */
     public void addBid(double price, int quantity)
     {
+    	logger.info("addBid qty : {}", quantity);
+    	logger.info("addBid price : {}", price);
         List<Order> bucket = getBucket(bidMap, price);
         Order newBid = new Order(price, quantity);
         bucket.add(newBid);
@@ -64,7 +66,11 @@ public class OrderBook
     {
         List<Order> bucket = getBucket(offerMap, price);
         Order newOffer = new Order(price, quantity);
+    	logger.info("addOffer qty : {}", newOffer.getQuantity());
+    	logger.info("addOffer price : {}", newOffer.getPrice());
+    	logger.info("offerMap size : {}", bucket.size());
         bucket.add(newOffer);
+    	logger.info("offerMap after insert size : {}", bucket.size());
         offerMap.put(newOffer.getPrice(), bucket);
         offerMinPriceList.add(price);
         matchOrders();
