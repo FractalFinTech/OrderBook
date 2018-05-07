@@ -51,13 +51,15 @@ curl -H "Content-Type: application/json" -d '{"name":"diner0", "price":"100", "q
 
 Get market bid list
 ```
-curl -d "name=diner0" -X POST http://localhost:8080/market/bid/get
+curl -H "Content-Type: application/json" -d '{"name":"diner0"}' -X POST http://localhost:8080/market/bid/get
 ```
 
 Get market offer list
 ```
-curl -d "name=diner0" -X POST http://localhost:8080/market/offer/get
+curl -H "Content-Type: application/json" -d '{"name":"diner0"}' -X POST http://localhost:8080/market/offer/get
 ```
+
+Check out the file test.sh for more information on testing.
 
 ## Dev Environment Requirements
 
