@@ -45,8 +45,10 @@ public class MarketList
 
     public void Add(String name)
     {
-      market = new OrderBook(name);
-      orderBooks.put(name, market);
+      if (!orderBooks.containsKey(name)) {
+          market = new OrderBook(name);
+          orderBooks.put(name, market);
+      }
     }
 
     public void AddBid(OrderItemDao bid)
