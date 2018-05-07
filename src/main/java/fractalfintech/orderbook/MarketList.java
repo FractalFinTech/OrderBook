@@ -51,9 +51,9 @@ public class MarketList
 
     public void AddBid(OrderItemDao bid)
     {
-    	logger.info("MarketList bid name : {}", bid.getName());
-    	logger.info("MarketList bid price : {}", bid.getPrice());
-    	logger.info("MarketList bid qty : {}", bid.getQty());
+    	logger.info("MarketList AddBid name : {}", bid.getName());
+    	logger.info("MarketList AddBid price : {}", bid.getPrice());
+    	logger.info("MarketList AddBid qty : {}", bid.getQty());
     	if (orderBooks.containsKey(bid.getName())) {
     		OrderBook book = orderBooks.get(bid.getName());
     		book.addBid(bid.getPrice(), bid.getQty());
@@ -62,14 +62,19 @@ public class MarketList
 
     public void AddOffer(OrderItemDao offer)
     {
+    	logger.info("MarketList AddOffer name : {}", offer.getName());
+    	logger.info("MarketList AddOffer price : {}", offer.getPrice());
+    	logger.info("MarketList AddOffer qty : {}", offer.getQty());
     	if (orderBooks.containsKey(offer.getName())) {
     		OrderBook book = orderBooks.get(offer.getName());
-    		book.addBid(offer.getPrice(), offer.getQty());
+    		book.addOffer(offer.getPrice(), offer.getQty());
     	}
     }
 
     public Map<Double, List<Order>> GetBidMap(OrderItemDao bid)
     {
+    	logger.info("MarketList GetBidMap name : {}", bid.getName());
+    	
     	if (orderBooks.containsKey(bid.getName())) {
     		OrderBook book = orderBooks.get(bid.getName());
         	Map<Double, List<Order>> bidMap = book.getBidMap();
@@ -80,6 +85,8 @@ public class MarketList
 
     public Map<Double, List<Order>> GetOfferMap(OrderItemDao offer)
     {
+    	logger.info("MarketList GetOfferMap name : {}", offer.getName());
+
     	if (orderBooks.containsKey(offer.getName())) {
     		OrderBook book = orderBooks.get(offer.getName());
         	Map<Double, List<Order>> offerMap = book.getOfferMap();

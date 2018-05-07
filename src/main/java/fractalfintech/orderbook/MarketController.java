@@ -66,12 +66,6 @@ public class MarketController
   		return new ResponseEntity<String>("success: bid added.", HttpStatus.OK);
   	}
 
-    @PostMapping("/market/bid/get")
-    @ResponseBody
-  	public Map<Double, List<Order>> GetMarketBid(@ModelAttribute OrderItemDao bid) {
-    	Map<Double, List<Order>> list = marketList.GetBidMap(bid);
-  		return list;
-  	}
 
 
     @RequestMapping(value = "/market/offer/add", method = RequestMethod.POST,consumes="application/json")
@@ -83,14 +77,22 @@ public class MarketController
   		return new ResponseEntity<String>("success: offer added.", HttpStatus.OK);
   	}
 
-    @PostMapping("/market/offer/get")
-    @ResponseBody
-  	public Map<Double, List<Order>> GetMarketOffer(@ModelAttribute OrderItemDao offer) {
+    @RequestMapping(value = "/market/offer/get", method = RequestMethod.POST,consumes="application/json")
+  	public ResponseEntity<Map<Double, List<Order>>> GetMarketOffer(@RequestBody OrderItemDao offer) {
+    	logger.info("MarketController GetMarketOffer name : {}", offer.getName());
     	Map<Double, List<Order>> list = marketList.GetOfferMap(offer);
-  		return list;
+    	return new ResponseEntity<Map<Double, List<Order>>>(list, HttpStatus.OK);
   	}
 
 
+    @RequestMapping(value = "/market/bid/get", method = RequestMethod.POST,consumes="application/json")
+  	public ResponseEntity<Map<Double, List<Order>>> GetMarketBid(@RequestBody OrderItemDao bid) {
+    	logger.info("MarketController GetMarketBid name : {}", bid.getName());
+    	Map<Double, List<Order>> list = marketList.GetBidMap(bid);
+    	return new ResponseEntity<Map<Double, List<Order>>>(list, HttpStatus.OK);
+  	}
+    
+    
     @RequestMapping("/")
   	public String index() {
   		return "Greetings from Spring Boot!";
