@@ -12,8 +12,13 @@ import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class OrderBook
 {
+	private final Logger logger = LoggerFactory.getLogger(OrderBook.class);
+	
     private String itemName;
     // Maps use List as value to hold multiple values with same hash
     private Map<Double, List<Order>> bidMap = null;
@@ -99,6 +104,7 @@ public class OrderBook
             if(lowestOffer == null || highestBid == null || lowestOffer > highestBid)
             {
                 finished = true;
+            	logger.info("OrderBook matchOrders finished = true");
             }
             else
             {
@@ -112,22 +118,28 @@ public class OrderBook
 
                 if(bidQuantity > offerQuantity)
                 {
+                	logger.info("bidQuantity > offerQuantity");
                     System.out.println(successfulTrade(offerQuantity, lowestOffer));
 
                     // Decrements quantity in bid
                     bidQuantity -= offerQuantity;
                     bidBucket.get(0).setQuantity(bidQuantity);
+                	logger.info("bidQuantity remaining qty : {}", bidQuantity);
+
                     // Closes previous offer
                     offerBucket.remove(0);
                     offerMinPriceList.remove();
                 }
                 else if(offerQuantity > bidQuantity)
                 {
+                	logger.info("bidQuantity < offerQuantity");
                     System.out.println(successfulTrade(bidQuantity, lowestOffer));
 
                     // Decrements quantity in offer
                     offerQuantity -= bidQuantity;
                     offerBucket.get(0).setQuantity(offerQuantity);
+                	logger.info("offerQuantity remaining qty : {}", offerQuantity);
+
                     //  Closes previous bid
                     bidBucket.remove(0);
                     bidMaxPriceList.remove();
@@ -151,6 +163,8 @@ public class OrderBook
     // Returns the string printed for a successful trade.
     public String successfulTrade(int quantity, double price)
     {
+    	logger.info("successfulTrade bidQuantity : {}", quantity);
+    	logger.info("successfulTrade lowestOffer : {}", price);
         return quantity + " shares traded for $" + price + " per share.";
     }
 
