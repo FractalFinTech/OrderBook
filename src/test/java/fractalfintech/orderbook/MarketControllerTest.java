@@ -35,7 +35,7 @@ public class MarketControllerTest {
 
     @Test
     public void addMarketItem() throws Exception {
-        mvc.perform(MockMvcRequestBuilders.get("/market/add/item/apple").accept(MediaType.APPLICATION_JSON))
+        mvc.perform(MockMvcRequestBuilders.get("/add/item/apple").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().string(equalTo("success")));
     }
@@ -58,7 +58,7 @@ public class MarketControllerTest {
         marketItemDao.setQty(25);
         marketItemDao.setType("Market");
         marketItemDao.setTranType("Buy");
-        mvc.perform(MockMvcRequestBuilders.post("/market/bid/add")
+        mvc.perform(MockMvcRequestBuilders.post("/bid/add")
                 .content(asJsonString(marketItemDao))
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
@@ -74,7 +74,7 @@ public class MarketControllerTest {
         marketItemDao.setQty(20);
         marketItemDao.setType("Market");
         marketItemDao.setTranType("Sell");
-        mvc.perform(MockMvcRequestBuilders.post("/market/offer/add")
+        mvc.perform(MockMvcRequestBuilders.post("/offer/add")
                 .content(asJsonString(marketItemDao))
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))

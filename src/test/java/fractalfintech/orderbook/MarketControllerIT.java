@@ -38,4 +38,11 @@ public class MarketControllerIT {
                 String.class);
         assertThat(response.getBody(), equalTo("Greetings from Spring Boot!"));
     }
+
+    @Test
+    public void getCustom() throws Exception {
+        ResponseEntity<String> response = template.getForEntity(base.toString()+"custom",
+                String.class);
+        assertThat(response.getBody(), equalTo("Custom message here."));
+    }
 }
